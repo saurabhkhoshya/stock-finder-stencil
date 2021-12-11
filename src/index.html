@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/web-component-p2.esm.js"></script>
+  <script nomodule src="/build/web-component-p2.js"></script>
+</head>
+
+<body>
+  <app-stock-price stock-symbol="IBM"></app-stock-price>
+  <app-stock-finder></app-stock-finder>
+  <script>
+    const stockFinderEL = document.querySelector('app-stock-finder');
+    stockFinderEL.addEventListener('appSymbolSelected', event => {
+      console.log(event);
+    });
+  </script>
+</body>
+
+</html>
