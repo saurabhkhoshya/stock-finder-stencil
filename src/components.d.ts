@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AppSpinner {
+    }
     interface AppStockFinder {
     }
     interface AppStockPrice {
@@ -13,6 +15,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAppSpinnerElement extends Components.AppSpinner, HTMLStencilElement {
+    }
+    var HTMLAppSpinnerElement: {
+        prototype: HTMLAppSpinnerElement;
+        new (): HTMLAppSpinnerElement;
+    };
     interface HTMLAppStockFinderElement extends Components.AppStockFinder, HTMLStencilElement {
     }
     var HTMLAppStockFinderElement: {
@@ -26,11 +34,14 @@ declare global {
         new (): HTMLAppStockPriceElement;
     };
     interface HTMLElementTagNameMap {
+        "app-spinner": HTMLAppSpinnerElement;
         "app-stock-finder": HTMLAppStockFinderElement;
         "app-stock-price": HTMLAppStockPriceElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppSpinner {
+    }
     interface AppStockFinder {
         "onAppSymbolSelected"?: (event: CustomEvent<string>) => void;
     }
@@ -38,6 +49,7 @@ declare namespace LocalJSX {
         "stockSymbol"?: string;
     }
     interface IntrinsicElements {
+        "app-spinner": AppSpinner;
         "app-stock-finder": AppStockFinder;
         "app-stock-price": AppStockPrice;
     }
@@ -46,6 +58,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-spinner": LocalJSX.AppSpinner & JSXBase.HTMLAttributes<HTMLAppSpinnerElement>;
             "app-stock-finder": LocalJSX.AppStockFinder & JSXBase.HTMLAttributes<HTMLAppStockFinderElement>;
             "app-stock-price": LocalJSX.AppStockPrice & JSXBase.HTMLAttributes<HTMLAppStockPriceElement>;
         }
